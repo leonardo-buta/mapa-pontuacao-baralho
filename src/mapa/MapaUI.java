@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapa;
 
+import java.awt.Component;
 import javax.swing.JFrame;
 
 /**
@@ -14,7 +10,7 @@ import javax.swing.JFrame;
 public class MapaUI extends javax.swing.JFrame {
 
     int scoreA = 0, scoreB = 0, currentScoreA = 0, currentScoreB = 0;
-    
+
     /**
      * Creates new form MapaUI
      */
@@ -38,15 +34,19 @@ public class MapaUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lblScoreB = new javax.swing.JLabel();
         lblScoreA = new javax.swing.JLabel();
-        onePointA = new javax.swing.JButton();
-        minutsOnePointA = new javax.swing.JButton();
-        threePointA = new javax.swing.JButton();
-        onePointB = new javax.swing.JButton();
-        minusOnePointB = new javax.swing.JButton();
-        threePointB = new javax.swing.JButton();
         lblCurrentScoreB = new javax.swing.JLabel();
         lblCurrentScoreA = new javax.swing.JLabel();
-        restart = new javax.swing.JButton();
+        lblWinner = new javax.swing.JLabel();
+        btnRestart = new javax.swing.JButton();
+        panelPointsA = new javax.swing.JPanel();
+        minutsOnePointA = new javax.swing.JButton();
+        onePointA = new javax.swing.JButton();
+        threePointA = new javax.swing.JButton();
+        panelPointsB = new javax.swing.JPanel();
+        minusOnePointB = new javax.swing.JButton();
+        onePointB = new javax.swing.JButton();
+        threePointB = new javax.swing.JButton();
+        lblRestartMessage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,11 +64,22 @@ public class MapaUI extends javax.swing.JFrame {
         lblScoreA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblScoreA.setText("0");
 
-        onePointA.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        onePointA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/onepoint.png"))); // NOI18N
-        onePointA.addActionListener(new java.awt.event.ActionListener() {
+        lblCurrentScoreB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCurrentScoreB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCurrentScoreB.setText("0");
+
+        lblCurrentScoreA.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblCurrentScoreA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCurrentScoreA.setText("0");
+
+        lblWinner.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblWinner.setText("Vencedor");
+
+        btnRestart.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restart.png"))); // NOI18N
+        btnRestart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                onePointAActionPerformed(evt);
+                btnRestartActionPerformed(evt);
             }
         });
 
@@ -80,11 +91,55 @@ public class MapaUI extends javax.swing.JFrame {
             }
         });
 
+        onePointA.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        onePointA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/onepoint.png"))); // NOI18N
+        onePointA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                onePointAActionPerformed(evt);
+            }
+        });
+
         threePointA.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         threePointA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3point.png"))); // NOI18N
         threePointA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 threePointAActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelPointsALayout = new javax.swing.GroupLayout(panelPointsA);
+        panelPointsA.setLayout(panelPointsALayout);
+        panelPointsALayout.setHorizontalGroup(
+            panelPointsALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPointsALayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPointsALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPointsALayout.createSequentialGroup()
+                        .addComponent(onePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(threePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPointsALayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(minutsOnePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelPointsALayout.setVerticalGroup(
+            panelPointsALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPointsALayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPointsALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(onePointA)
+                    .addComponent(threePointA))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(minutsOnePointA)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        minusOnePointB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        minusOnePointB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minusone.png"))); // NOI18N
+        minusOnePointB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minusOnePointBActionPerformed(evt);
             }
         });
 
@@ -96,14 +151,6 @@ public class MapaUI extends javax.swing.JFrame {
             }
         });
 
-        minusOnePointB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        minusOnePointB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minusone.png"))); // NOI18N
-        minusOnePointB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minusOnePointBActionPerformed(evt);
-            }
-        });
-
         threePointB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         threePointB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3point.png"))); // NOI18N
         threePointB.addActionListener(new java.awt.event.ActionListener() {
@@ -112,21 +159,35 @@ public class MapaUI extends javax.swing.JFrame {
             }
         });
 
-        lblCurrentScoreB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblCurrentScoreB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurrentScoreB.setText("0");
+        javax.swing.GroupLayout panelPointsBLayout = new javax.swing.GroupLayout(panelPointsB);
+        panelPointsB.setLayout(panelPointsBLayout);
+        panelPointsBLayout.setHorizontalGroup(
+            panelPointsBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPointsBLayout.createSequentialGroup()
+                .addGroup(panelPointsBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelPointsBLayout.createSequentialGroup()
+                        .addComponent(onePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(threePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelPointsBLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(minusOnePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 12, Short.MAX_VALUE))
+        );
+        panelPointsBLayout.setVerticalGroup(
+            panelPointsBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPointsBLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPointsBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(onePointB)
+                    .addComponent(threePointB))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(minusOnePointB)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        lblCurrentScoreA.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblCurrentScoreA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCurrentScoreA.setText("0");
-
-        restart.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        restart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restart.png"))); // NOI18N
-        restart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                restartActionPerformed(evt);
-            }
-        });
+        lblRestartMessage.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblRestartMessage.setText("Clique em reiniciar para começar novamente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,43 +197,37 @@ public class MapaUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jSeparator1))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(391, 391, 391)
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(onePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(threePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(minutsOnePointA, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addComponent(restart)
-                .addGap(209, 209, 209)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(onePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(threePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(minusOnePointB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(100, 100, 100))
+                .addGap(22, 22, 22)
+                .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(140, 140, 140))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(391, 391, 391)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(385, 385, 385)
+                        .addComponent(btnRestart))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblWinner)
+                            .addComponent(lblRestartMessage))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,36 +242,31 @@ public class MapaUI extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
-                        .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(onePointA)
-                                    .addComponent(threePointA))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minutsOnePointA))
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(onePointB)
-                                    .addComponent(threePointB))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minusOnePointB))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(restart)))
-                .addContainerGap(474, Short.MAX_VALUE))
+                                .addGap(69, 69, 69)
+                                .addComponent(lblWinner)))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblRestartMessage)
+                        .addGap(4, 4, 4)
+                        .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btnRestart)
+                .addContainerGap(386, Short.MAX_VALUE))
         );
 
         lblScoreB.getAccessibleContext().setAccessibleName("");
+        lblWinner.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -225,52 +275,104 @@ public class MapaUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void restartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restartActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_restartActionPerformed
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+        resetScore();
+        resetCurrentScore();
+    }//GEN-LAST:event_btnRestartActionPerformed
 
     private void threePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threePointBActionPerformed
         currentScoreB += 3;
         lblCurrentScoreB.setText(Integer.toString(currentScoreB));
+        updateScore();
     }//GEN-LAST:event_threePointBActionPerformed
 
     private void minusOnePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusOnePointBActionPerformed
         currentScoreB--;
         lblCurrentScoreB.setText(Integer.toString(currentScoreB));
+        updateScore();
     }//GEN-LAST:event_minusOnePointBActionPerformed
 
     private void onePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePointBActionPerformed
         currentScoreB++;
         lblCurrentScoreB.setText(Integer.toString(currentScoreB));
+        updateScore();
     }//GEN-LAST:event_onePointBActionPerformed
 
     private void threePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threePointAActionPerformed
         currentScoreA += 3;
         lblCurrentScoreA.setText(Integer.toString(currentScoreA));
+        updateScore();
     }//GEN-LAST:event_threePointAActionPerformed
 
     private void minutsOnePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutsOnePointAActionPerformed
         currentScoreA--;
         lblCurrentScoreA.setText(Integer.toString(currentScoreA));
+        updateScore();
     }//GEN-LAST:event_minutsOnePointAActionPerformed
 
     private void onePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePointAActionPerformed
         currentScoreA++;
         lblCurrentScoreA.setText(Integer.toString(currentScoreA));
+        updateScore();
     }//GEN-LAST:event_onePointAActionPerformed
+
+    private void updateScore() {
+        if (currentScoreA >= 12) {
+            scoreA++;
+            lblScoreA.setText(Integer.toString(scoreA));
+            resetCurrentScore();
+        } else if (currentScoreB >= 12) {
+            scoreB++;            
+            lblScoreB.setText(Integer.toString(scoreB));
+            resetCurrentScore();
+        }
+        
+        if (scoreA == 3){
+            toggleScoreButtons(false);
+            lblWinner.setText("O Vencedor é a equipe A!");
+        }else if (scoreB == 3){
+            toggleScoreButtons(false);
+            lblWinner.setText("O Vencedor é a equipe B!");
+        }
+    }
+    
+    private void resetCurrentScore(){
+        currentScoreA = 0;
+        currentScoreB = 0;
+        lblCurrentScoreA.setText(Integer.toString(currentScoreA));
+        lblCurrentScoreB.setText(Integer.toString(currentScoreB));
+    }
+    
+    private void resetScore(){
+        scoreA = 0;
+        scoreB = 0;
+        lblScoreA.setText(Integer.toString(scoreA));
+        lblScoreB.setText(Integer.toString(scoreB));
+        toggleScoreButtons(true);
+    }
+    
+    private void toggleScoreButtons(boolean enable) {
+        for (Component cp : panelPointsA.getComponents()) {
+            cp.setEnabled(enable);
+        }
+        
+        for (Component cp : panelPointsB.getComponents()) {
+            cp.setEnabled(enable);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -311,8 +413,9 @@ public class MapaUI extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRestart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -320,13 +423,16 @@ public class MapaUI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCurrentScoreA;
     private javax.swing.JLabel lblCurrentScoreB;
+    private javax.swing.JLabel lblRestartMessage;
     private javax.swing.JLabel lblScoreA;
     private javax.swing.JLabel lblScoreB;
+    private javax.swing.JLabel lblWinner;
     private javax.swing.JButton minusOnePointB;
     private javax.swing.JButton minutsOnePointA;
     private javax.swing.JButton onePointA;
     private javax.swing.JButton onePointB;
-    private javax.swing.JButton restart;
+    private javax.swing.JPanel panelPointsA;
+    private javax.swing.JPanel panelPointsB;
     private javax.swing.JButton threePointA;
     private javax.swing.JButton threePointB;
     // End of variables declaration//GEN-END:variables
