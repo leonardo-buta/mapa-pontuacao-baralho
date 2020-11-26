@@ -1,11 +1,12 @@
 package mapa;
 
 import java.awt.Component;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 
 /**
  *
- * @author Buta
+ * @author Leonardo Buta
  */
 public class MapaUI extends javax.swing.JFrame {
 
@@ -28,7 +29,6 @@ public class MapaUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,14 +47,15 @@ public class MapaUI extends javax.swing.JFrame {
         onePointB = new javax.swing.JButton();
         threePointB = new javax.swing.JButton();
         lblRestartMessage = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Equipe A");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/teamA.png"))); // NOI18N
 
-        jLabel2.setText("Equipe B");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/teamB.png"))); // NOI18N
 
-        jLabel3.setText("Placar");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/score.png"))); // NOI18N
 
         lblScoreB.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         lblScoreB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -73,7 +74,8 @@ public class MapaUI extends javax.swing.JFrame {
         lblCurrentScoreA.setText("0");
 
         lblWinner.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblWinner.setText("Vencedor");
+        lblWinner.setText("          ");
+        lblWinner.setToolTipText("");
 
         btnRestart.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         btnRestart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/restart.png"))); // NOI18N
@@ -187,86 +189,86 @@ public class MapaUI extends javax.swing.JFrame {
         );
 
         lblRestartMessage.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblRestartMessage.setText("Clique em reiniciar para começar novamente");
+        lblRestartMessage.setText("           ");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/actualRound.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnRestart)
+                        .addGap(78, 78, 78)
+                        .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 25, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(235, 235, 235)))))
                 .addGap(95, 95, 95))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(140, 140, 140))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(391, 391, 391)
-                        .addComponent(jLabel3))
+                        .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(btnRestart))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblWinner)
-                            .addComponent(lblRestartMessage))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblRestartMessage)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel4)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabel3)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblScoreA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblScoreB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(lblWinner)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(lblWinner)))
-                        .addGap(18, 18, 18)
                         .addComponent(lblRestartMessage)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCurrentScoreA, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCurrentScoreB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(btnRestart)
-                .addContainerGap(386, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelPointsA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelPointsB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRestart, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         lblScoreB.getAccessibleContext().setAccessibleName("");
-        lblWinner.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,22 +290,11 @@ public class MapaUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
-        resetScore();
-        resetCurrentScore();
-    }//GEN-LAST:event_btnRestartActionPerformed
-
     private void threePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threePointBActionPerformed
         currentScoreB += 3;
         lblCurrentScoreB.setText(Integer.toString(currentScoreB));
         updateScore();
     }//GEN-LAST:event_threePointBActionPerformed
-
-    private void minusOnePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusOnePointBActionPerformed
-        currentScoreB--;
-        lblCurrentScoreB.setText(Integer.toString(currentScoreB));
-        updateScore();
-    }//GEN-LAST:event_minusOnePointBActionPerformed
 
     private void onePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePointBActionPerformed
         currentScoreB++;
@@ -311,11 +302,23 @@ public class MapaUI extends javax.swing.JFrame {
         updateScore();
     }//GEN-LAST:event_onePointBActionPerformed
 
+    private void minusOnePointBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minusOnePointBActionPerformed
+        currentScoreB--;
+        lblCurrentScoreB.setText(Integer.toString(currentScoreB));
+        updateScore();
+    }//GEN-LAST:event_minusOnePointBActionPerformed
+
     private void threePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threePointAActionPerformed
         currentScoreA += 3;
         lblCurrentScoreA.setText(Integer.toString(currentScoreA));
         updateScore();
     }//GEN-LAST:event_threePointAActionPerformed
+
+    private void onePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePointAActionPerformed
+        currentScoreA++;
+        lblCurrentScoreA.setText(Integer.toString(currentScoreA));
+        updateScore();
+    }//GEN-LAST:event_onePointAActionPerformed
 
     private void minutsOnePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutsOnePointAActionPerformed
         currentScoreA--;
@@ -323,11 +326,10 @@ public class MapaUI extends javax.swing.JFrame {
         updateScore();
     }//GEN-LAST:event_minutsOnePointAActionPerformed
 
-    private void onePointAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onePointAActionPerformed
-        currentScoreA++;
-        lblCurrentScoreA.setText(Integer.toString(currentScoreA));
-        updateScore();
-    }//GEN-LAST:event_onePointAActionPerformed
+    private void btnRestartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRestartActionPerformed
+        resetScore();
+        resetCurrentScore();
+    }//GEN-LAST:event_btnRestartActionPerformed
 
     private void updateScore() {
         if (currentScoreA >= 12) {
@@ -340,12 +342,14 @@ public class MapaUI extends javax.swing.JFrame {
             resetCurrentScore();
         }
         
-        if (scoreA == 3){
+        if (scoreA >= 2){
             toggleScoreButtons(false);
             lblWinner.setText("O Vencedor é a equipe A!");
-        }else if (scoreB == 3){
+            lblRestartMessage.setText("Clique em reiniciar para começar novamente");
+        }else if (scoreB >= 2){
             toggleScoreButtons(false);
             lblWinner.setText("O Vencedor é a equipe B!");
+            lblRestartMessage.setText("Clique em reiniciar para começar novamente");
         }
     }
     
@@ -362,6 +366,8 @@ public class MapaUI extends javax.swing.JFrame {
         lblScoreA.setText(Integer.toString(scoreA));
         lblScoreB.setText(Integer.toString(scoreB));
         toggleScoreButtons(true);
+        lblWinner.setText("");
+        lblRestartMessage.setText("");
     }
     
     private void toggleScoreButtons(boolean enable) {
@@ -405,10 +411,12 @@ public class MapaUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 MapaUI frame = new MapaUI();
+                frame.setTitle("Pontuação Jogo de Cartas");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
+                frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/cards.png")));
             }
         });
     }
@@ -419,8 +427,8 @@ public class MapaUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCurrentScoreA;
     private javax.swing.JLabel lblCurrentScoreB;
     private javax.swing.JLabel lblRestartMessage;
